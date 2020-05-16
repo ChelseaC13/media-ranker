@@ -1,33 +1,36 @@
 <div class="spotlight">
-    <h1>Media Spotlight: why wont @work.spotlight.title work :(</h1>   
-    <h3> insert votes - @work.spotlight.genre <h3>
+    <h1>Media Spotlight: <%=Work.spotlight.title%> </h1>   
+    <h3> insert votes - <%=Work.spotlight.description%> <h3>
 </div>
 <div class="container">
   <div class="row">
     <div class="col-sm">
-      Top Movies
+      <h3 class="column_header">Top Movies</h3>
         <ul>
             <% work_group = @work.where("category = ?", "movie")%>
             <% 10.times do |i| %>
-                <li><%= work_group[i].title %></li>
+                <span class="green_title"><%= work_group[i].title %></span> <span class="gray_creator">by <%=work_group[i].creator%></span>
+                <p>num of votes<p>
             <% end %>
         </ul>
     </div>
     <div class="col-sm">
-      Top Books
+      <h3 class="column_header">Top Books</h3>
         <ul>
             <% work_group = @work.where("category = ?", "book")%>
             <% 10.times do |i| %>
-                <li><%= work_group[i].title %></li>
+                <span class="green_title"><%= work_group[i].title %></span> <span class="gray_creator">by <%=work_group[i].creator%></span>
+                <p>num of votes<p>
             <% end %>
         </ul>
     </div>
     <div class="col-sm">
-      Top Albums
+      <h3 class="column_header">Top Albums</h3>
         <ul>
             <% work_group = @work.where("category = ?", "album")%>
             <% 10.times do |i| %>
-                <li><%= work_group[i].title %></li>
+                <span class="green_title"><%= work_group[i].title %></span> <span class="gray_creator">by <%=work_group[i].creator%></span>
+                <p>num of votes<p>
             <% end %>
         </ul>
     </div>

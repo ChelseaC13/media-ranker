@@ -1,6 +1,6 @@
 class Work < ApplicationRecord
 
-  def spotlight
+  def self.spotlight
     # to code later
     work = self.find_by(category: "album")
     return work
