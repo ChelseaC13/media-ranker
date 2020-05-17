@@ -1,31 +1,71 @@
-<div class="spotlight">
-    <h1>Media Spotlight: why wont @work.spotlight.title work :(</h1>   
-    <h3> insert votes - @work.spotlight.genre <h3>
-</div>
-<div class="col-sm">Top Movies
-    <ul>
-        <% work_group = @work.where("category = ?", "movie")%>
-        <% work_group.each do |movie| %>
-        <li><%= movie.title %></li>
-        <% end %>
-    </ul>
-</div>
+<h3><span class="green-with-space">List of Works</span></h3>
+<div ><h4>Movies</h4></div>
+<table>
+    <tr>
+        <th>Votes</th>
+        <th>Title</th>
+        <th>Created By</th>
+        <th>Published</th>
+        <th>Upvote</th>
+    </tr>
 
-<div class="col-sm">Top Books
-    <ul>
-        <% work_group = @work.where("category = ?", "book")%>
+    <% work_group = @work.where("category = ?", "movie")%>
         <% work_group.each do |movie| %>
-        <li><%= movie.title %></li>
+        <tr>
+            <td><%= "#  votes" %></td>
+            <td><%= movie.title %></td>
+            <td><%= movie.creator %></td>
+            <td><%= movie.publication_year %></td>
+            <td><%="upvote button"%></td>
+        </tr>
         <% end %>
-    </ul>
-</div> 
+</table>
 
-<div class="col-sm">Top Albums
-    <ul>
-        <% work_group = @work.where("category = ?", "album")%>
-        <% work_group.each do |movie| %>
-        <li><%= movie.title %></li>
+
+<div ><h4>Books</h4></div>
+<table>
+    <tr>
+        <th>Votes</th>
+        <th>Title</th>
+        <th>Created By</th>
+        <th>Published</th>
+        <th>Upvote</th>
+    </tr>
+
+    <% work_group = @work.where("category = ?", "book")%>
+        <% work_group.each do |book| %>
+        <tr>
+            <td><%= "#  votes" %></td>
+            <td><%= book.title %></td>
+            <td><%= book.creator %></td>
+            <td><%= book.publication_year %></td>
+            <td><%="upvote button"%></td>
+        </tr>
         <% end %>
-    </ul>
-</div>
+</table>
+
+
+<div ><h4>Albums</h4></div>
+<table>
+    <tr>
+        <th>Votes</th>
+        <th>Title</th>
+        <th>Created By</th>
+        <th>Published</th>
+        <th>Upvote</th>
+    </tr>
+
+    <% work_group = @work.where("category = ?", "album")%>
+        <% work_group.each do |album| %>
+        <tr>
+            <td><%= "#  votes" %></td>
+            <td><%= album.title %></td>
+            <td><%= album.creator %></td>
+            <td><%= album.publication_year %></td>
+            <td><%="upvote button"%></td>
+        </tr>
+        <% end %>
+</table>
+
+
 
