@@ -9,7 +9,7 @@
         <ul>
             <% work_group = @work.where("category = ?", "movie")%>
             <% 10.times do |i| %>
-                <span class="green_title"><%= work_group[i].title %></span> <span class="gray_creator">by <%=work_group[i].creator%></span>
+                <span class="green_title"><%= link_to "#{work_group[i].title}", work_path(work_group[i].id) %></span> <span class="gray_creator">by <%=work_group[i].creator%></span>
                 <p>num of votes<p>
             <% end %>
         </ul>

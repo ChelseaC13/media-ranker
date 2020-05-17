@@ -11,6 +11,14 @@ class WorksController < ApplicationController
 
   end
 
+  def show
+    work_id = params[:id]
+    @work = Work.find_by(id: work_id)
+    if @work.nil?
+      redirect_to root_path
+      return
+    end
+  end
 
   def create
     @work = Work.new(work_params) 
