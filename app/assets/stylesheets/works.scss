@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+
+// homepage
 .spotlight{
     border-bottom: lightgray;
     border-width: 4px;
@@ -28,7 +30,27 @@
 
 }
 
+// .a{
+//     color:white !important;
+// }
+
+.btn-primary{
+    color: white;
+    background-color:#25a69a ;
+    border: none;
+    margin: 5px;
+    padding: 5px !important;
+   
+}
+
+
+// works index
 .green-with-space{
     color: #25a69a;
     margin: 0px 0px 0px 15px
+}
+
+table{
+    margin: 15
+    px;
 }
