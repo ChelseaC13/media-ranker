@@ -4,28 +4,21 @@
 <p> Created by<%=@work.description%> </p>
 
 
-<div class="btn-group ">
-      <button type="button" class="btn btn-link">
-        <%= link_to "View top media", root_path %>
-      </button>
+<button type="button" class="btn btn-primary">
+  <%= link_to "Back to media ranks", root_path %>
+</button>    
         
-    </div>
-     <div class="btn-group ">
-      <button type="button"class="btn btn-link" >
-        <%= link_to "View all media", works_path %>
-      </button>
+<button type="button" class="btn btn-primary">
+  <%= link_to "edit", works_path %>
+</button>      
 
-      </div>
-     <div class="btn-group ">
-      <button type="button"class="btn btn-link" >
-        <%= link_to "Add a new work", new_work_path %>
-      </button>
+<button type="button" class="btn btn-primary">
+  <%= link_to "Upvote", new_work_path %>
+</button> 
 
-      </div>
-     <div class="btn-group ">
-      <button type="button"class="btn btn-link" >
-        View all users
-      </button>
-</div>
+<button type="button" class="btn btn-danger"> 
+    <%= link_to "Delete", work_path(@work), method: :delete, data: {confirm: "Are you sure?"} %>
+</button>
+
 
 

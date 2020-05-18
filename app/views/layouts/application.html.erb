@@ -12,44 +12,40 @@
   <body>
   <header>
     <nav>
-    <h1 class="headerwords"><%= link_to "Media Ranker", root_path , class:"orange-header"%> <span class="white-title"> <span class="white-line">  |  </span>  Ranking the Best of Everything</span></h1>
- 
-    <div class="btn-group ">
-      <button type="button" class="btn btn-link">
-        <%= link_to "View top media", root_path %>
-      </button>
-        
-    </div>
-     <div class="btn-group ">
-      <button type="button"class="btn btn-link" >
-        <%= link_to "View all media", works_path %>
-      </button>
-
+      <h1 class="headerwords"><%= link_to "Media Ranker", root_path , class:"orange-header"%> <span class="white-title"> <span class="white-line">  |  </span>  Ranking the Best of Everything</span></h1>
+  
+      <div class="btn-group ">
+        <button type="button" class="btn btn-link">
+          <%= link_to "View top media", root_path %>
+        </button>   
       </div>
-     <div class="btn-group ">
-      <button type="button"class="btn btn-link" >
-        <%= link_to "Add a new work", new_work_path %>
-      </button>
 
+      <div class="btn-group ">
+        <button type="button"class="btn btn-link" >
+          <%= link_to "View all media", works_path %>
+        </button>
       </div>
-     <div class="btn-group ">
-      <button type="button"class="btn btn-link" >
-        View all users
-      </button>
 
-        </div>
-     <div class="btn btn-primary">
-      <button type="button" class="btn btn-link">
+      <div class="btn-group ">
+        <button type="button"class="btn btn-link" >
+          <%= link_to "Add a new work", new_work_path %>
+        </button>
+      </div>
+
+      <div class="btn-group ">
+        <button type="button"class="btn btn-link" >
+          View all users
+        </button>
+      </div>
+      
+      <button  class="btn btn-primary">
         logged in to implement
       </button>
 
-        </div>
-     <div class="btn btn-primary">
-      <button type="button"class="btn btn-link" >
+      <button type="button" class="btn btn-primary">
         Log Out
       </button>
-        
-    </div>
+   
     </nav>
   </header>
     <%= yield %>
