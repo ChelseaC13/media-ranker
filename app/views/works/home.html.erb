@@ -7,9 +7,9 @@
     <div class="col-sm">
       <h3 class="green">Top Movies</h3>
         <ul>
-            <% work_group = @work.where("category = ?", "movie")%>
-            <% 10.times do |i| %>
-                <span class="green_title"><%= link_to "#{work_group[i].title}", work_path(work_group[i].id) %></span> <span class="gray_creator">by <%=work_group[i].creator%></span>
+            <% top_movies = Work.top_ten("movie")%>
+            <% top_movies.each do |movie| %>
+                <span class="green_title"><%= link_to "#{movie.title}", work_path(movie.id) %></span> <span class="gray_creator">by <%=movie.creator%></span>
                 <p>num of votes<p>
             <% end %>
         </ul>
@@ -17,9 +17,9 @@
     <div class="col-sm">
       <h3 class="green">Top Books</h3>
         <ul>
-            <% work_group = @work.where("category = ?", "book")%>
-            <% 10.times do |i| %>
-                <span class="green_title"><%= work_group[i].title %></span> <span class="gray_creator">by <%=work_group[i].creator%></span>
+          <% top_books = Work.top_ten("book")%>
+            <% top_books.each do |book| %>
+                <span class="green_title"><%= link_to "#{book.title}", work_path(book.id) %></span> <span class="gray_creator">by <%=book.creator%></span>
                 <p>num of votes<p>
             <% end %>
         </ul>
@@ -27,9 +27,9 @@
     <div class="col-sm">
       <h3 class="green">Top Albums</h3>
         <ul>
-            <% work_group = @work.where("category = ?", "album")%>
-            <% 10.times do |i| %>
-                <span class="green_title"><%= work_group[i].title %></span> <span class="gray_creator">by <%=work_group[i].creator%></span>
+            <% top_books = Work.top_ten("book")%>
+            <% top_books.each do |book| %>
+                <span class="green_title"><%= link_to "#{book.title}", work_path(book.id) %></span> <span class="gray_creator">by <%=book.creator%></span>
                 <p>num of votes<p>
             <% end %>
         </ul>
