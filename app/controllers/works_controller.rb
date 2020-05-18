@@ -20,6 +20,10 @@ class WorksController < ApplicationController
     end
   end
 
+  def new
+    @work = Work.new
+  end
+
   def create
     @work = Work.new(work_params) 
     
