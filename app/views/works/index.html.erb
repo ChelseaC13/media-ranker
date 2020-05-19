@@ -12,7 +12,7 @@
     <% work_group = @work.where("category = ?", "movie")%>
         <% work_group.each do |movie| %>
         <tr>
-            <td><%= "#  votes" %></td>
+            <td><%= Work.vote_total(movie.id) %></td>
             <td><%= link_to movie.title, work_path(movie.id) %></td>
             <td><%= movie.creator %></td>
             <td><%= movie.publication_year %></td>

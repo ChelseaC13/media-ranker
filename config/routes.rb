@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   root to: 'works#home'
  
   resources :works
-  resources :users #do
-    #
+  resources :users 
+  resources :votes, only: [:create]
 end

@@ -1,4 +1,7 @@
 class Work < ApplicationRecord
+  has_many :votes
+  has_many :users, through: :votes
+
   validates :category, presence: true
   validates :title, presence: true
   validates :creator, presence: true
@@ -21,6 +24,11 @@ class Work < ApplicationRecord
     return top_ten
   end
 
+  def self.vote_total(id)
+    votes_with_driver_id = Vote.where(id: id)
+    return votes_with_driver_id.count
+
+  end
     
 end
 
