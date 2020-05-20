@@ -25,8 +25,8 @@ class Work < ApplicationRecord
   end
 
   def self.vote_total(id)
-    votes_with_driver_id = Vote.where(id: id)
-    return votes_with_driver_id.count
+    votes_with_work_id = Vote.where(id: id)
+    return votes_with_work_id.count
 
   end
     
