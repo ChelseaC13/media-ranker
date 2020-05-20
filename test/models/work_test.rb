@@ -99,4 +99,38 @@ describe Work do
       expect(@album.errors.messages).must_include :description
     end
   end
+
+
+
+
+  describe 'relations' do
+    it 'set vote works_id and user_id through work and user' do
+      # Create two models
+      album = Work.new(category:'album', title: 'test album', creator: 'chelsea', publication_year: 1999, description:'This is a album')
+      user = User.new
+      # Make the models relate to one another
+      vote = Vote.new( id: nil,
+        name: nil,
+        created_at: nil,
+        updated_at: nil,
+        work_id: album.id,
+        user_id: user.id)
+
+      # id should 
+      expect(album.id).must_equal vote.id
+      expect(user.id).must_equal vote.id
+    end
+
+    # it 'can set the author through "author_id"' do
+    #   # Create two models
+    #   author = Author.create!(name: "test author")
+    #   book = Book.new(title: "test book")
+
+    #   # Make the models relate to one another
+    #   book.author_id = author.id
+
+    #   # author should have changed accordingly
+    #   expect(book.author).must_equal author
+    # end
+  end
 end
