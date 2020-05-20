@@ -37,14 +37,23 @@
           View all users
         </button>
       </div>
-      
-      <button  class="btn btn-primary">
-        logged in to implement
-      </button>
+        
 
-      <button type="button" class="btn btn-primary">
-        Log Out
-      </button>
+      <% if session[:user_id] == nil %>
+        <button type="button" class="btn btn-primary">
+          <%= link_to "Log In", login_path %>
+        </button>
+
+      <% else %>
+        <button  class="btn btn-primary">
+          Logged in as <%= User.find_by(id: session[:user_id]).name %>
+        </button>
+
+        <button type="button" class="btn btn-primary">
+          <%= link_to "Log Out", logout_path, method: :post %>
+        </button>
+      <% end %>
+     
    
     </nav>
   </header>

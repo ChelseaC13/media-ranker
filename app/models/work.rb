@@ -30,5 +30,10 @@ class Work < ApplicationRecord
 
   end
     
+  #in user model
+  # def self.return_name(id)
+  #   user = User.find_by(id)
+  #   return user.name
+  # end 
 end
 
