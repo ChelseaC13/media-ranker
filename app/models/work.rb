@@ -15,7 +15,7 @@ class Work < ApplicationRecord
     return work
   end
 
-
+   
 
   def self.top_ten(type)
     work_group = self.where(category: type)
