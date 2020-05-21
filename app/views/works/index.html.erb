@@ -9,7 +9,7 @@
         <th>Upvote</th>
     </tr>
 
-    <% work_group = @work.where("category = ?", "movie")%>
+    <% work_group = Work.order("movie")%>
         <% work_group.each do |movie| %>
         <tr>
             <td><%= Work.vote_total(movie.id) %></td>
@@ -17,7 +17,6 @@
             <td><%= movie.creator %></td>
             <td><%= movie.publication_year %></td>
             <td class="btn btn-primary "><%= link_to "Upvote", work_votes_path(movie.id), method: :post%></td> 
-
         </tr>
         <% end %>
 </table>
@@ -33,14 +32,14 @@
         <th>Upvote</th>
     </tr>
 
-    <% work_group = @work.where("category = ?", "book")%>
+    <% work_group = Work.order("book")%>
         <% work_group.each do |book| %>
         <tr>
-            <td><%= "#  votes" %></td>
+            <td><%= Work.vote_total(book.id) %></td>
             <td><%= link_to book.title, work_path(book.id) %></td>
             <td><%= book.creator %></td>
             <td><%= book.publication_year %></td>
-            <td class=" btn btn-primary "><%="Upvote"%></td>
+            <td class="btn btn-primary "><%= link_to "Upvote", work_votes_path(book.id), method: :post%></td>
         
         </tr>
         <% end %>
@@ -57,14 +56,14 @@
         <th>Upvote</th>
     </tr>
 
-    <% work_group = @work.where("category = ?", "album")%>
+    <% work_group = Work.order("album")%>
         <% work_group.each do |album| %>
         <tr>
-            <td><%= "#  votes" %></td>
+            <td><%= Work.vote_total(album.id) %></td>
             <td><%= link_to album.title, work_path(album.id) %></td>
             <td><%= album.creator %></td>
             <td><%= album.publication_year %></td>
-            <td class=" btn btn-primary "><%="Upvote"%></td>
+            <td class="btn btn-primary "><%= link_to "Upvote", work_votes_path(album.id), method: :post%></td>
         </tr>
         <% end %>
 </table>

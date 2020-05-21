@@ -10,7 +10,7 @@
             <% top_movies = Work.top_ten("movie")%>
             <% top_movies.each do |movie| %>
                 <span class="green_title"><%= link_to "#{movie.title}", work_path(movie.id) %></span> <span class="gray_creator">by <%=movie.creator%></span>
-                <p>num of votes<p>
+                <p><%=Work.vote_total(movie.id)%><p>
             <% end %>
         </ul>
     </div>
@@ -20,17 +20,17 @@
           <% top_books = Work.top_ten("book")%>
             <% top_books.each do |book| %>
                 <span class="green_title"><%= link_to "#{book.title}", work_path(book.id) %></span> <span class="gray_creator">by <%=book.creator%></span>
-                <p>num of votes<p>
+                <p><%=Work.vote_total(book.id)%><p>
             <% end %>
         </ul>
     </div>
     <div class="col-sm">
       <h3 class="green">Top Albums</h3>
         <ul>
-            <% top_books = Work.top_ten("book")%>
-            <% top_books.each do |book| %>
-                <span class="green_title"><%= link_to "#{book.title}", work_path(book.id) %></span> <span class="gray_creator">by <%=book.creator%></span>
-                <p>num of votes<p>
+            <% top_books = Work.top_ten("album")%>
+            <% top_books.each do |album| %>
+                <span class="green_title"><%= link_to "#{album.title}", work_path(album.id) %></span> <span class="gray_creator">by <%=album.creator%></span>
+                <p><%=Work.vote_total(album.id)%><p>
             <% end %>
         </ul>
     </div>

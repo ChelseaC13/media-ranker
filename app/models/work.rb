@@ -19,21 +19,39 @@ class Work < ApplicationRecord
 
   def self.top_ten(type)
     work_group = self.where(category: type)
-    top_ten = work_group.sample(10)
-  
+    sorted = work_group.sort_by {|work| work.votes.count}
+    
+    top_ten = []
+
+    10.times do |i|
+      top_ten << sorted[(-1) - i]
+    end
+
     return top_ten
   end
+
+  def self.order(type)
+    work_group = self.where(category: type)
+    sorted = work_group.sort_by {|work| work.votes.count}
+    sorted.reverse!
+ 
+    return sorted
+  end
+
 
   def self.vote_total(id)
     votes_with_work_id = Vote.where(work_id: id)
     return votes_with_work_id.count
 
   end
+
+  
+  def self.vote_total(id)
+    votes_with_work_id = Vote.where(work_id: id)
+    return votes_with_work_id.count
+
+  end
     
-  #in user model
-  # def self.return_name(id)
-  #   user = User.find_by(id)
-  #   return user.name
-  # end 
+  
 end
 
