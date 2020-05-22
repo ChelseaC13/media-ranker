@@ -51,9 +51,11 @@ class WorksController < ApplicationController
       head :not_found
       return
     elsif @work.update(work_params)
+      flash[:success] = "Successfully updated #{@work.title}"
       redirect_to works_path 
       return
     else 
+      flash.now[:error] = "Something happened. #{@work.title} did not updated."
       render :edit
       return
     end
