@@ -1,6 +1,7 @@
-<h3><span class="green-with-space">User Summary: <%="insert Name"%></span></h3>
-<p>Joined site INSERT DATE</p>
-<h4>Movies</h4>
+
+<h3><span class="green-with-space">User Summary: <%=@user.name%></span></h3>
+<p>Joined site <%=@user.created_at.strftime("%B %d, %Y")%></p>
+<h4>Votes</h4>
 <table class="table">
     <tr>
         <th>Media Title</th>
@@ -10,5 +11,23 @@
         <th>Voted On</th> 
     </tr>
 
-  
+    <% vote_group = Vote.where(user_id: params[:id]) %>
+    <% vote_group.each do |vote| %>
+    <tr>
+        <td><%= vote.work.title %></td>
+        <td><%= vote.work.creator %></td>
+        <td><%= vote.work.publication_year %></td>
+        <td><%= vote.work.category %></td>
+        <td><%=vote.created_at.strftime("%B %d, %Y")%></td>
+        
+    </tr>
+    <% end %> 
 </table>
+
+    <button  class="btn btn-primary gray">
+         <%= link_to "See all Users", users_path %>
+    </button>
+
+    <button type="button" class="btn btn-primary">
+        <%= link_to "Back to Media List", works_path %>
+    </button>
