@@ -46,7 +46,9 @@
 
       <% else %>
         <button  class="btn btn-primary">
-          Logged in as <%= User.find_by(id: session[:user_id]).name %>
+          
+          <%user = User.find_by(id: session[:user_id])%>
+          <%= link_to "Logged in as #{user.name}", user_path(user.id) %></td>
         </button>
 
         <button type="button" class="btn btn-primary">

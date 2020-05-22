@@ -28,7 +28,7 @@ class WorksController < ApplicationController
     @work = Work.new(work_params) 
     
     if @work.save 
-      redirect_to works_path(@work.id)
+      redirect_to work_path(@work.id)
       return
     else 
       render :new, status: :bad_request
@@ -72,13 +72,6 @@ class WorksController < ApplicationController
     redirect_to works_path 
     return
     
-  end
-
-
-  private
-
-  def work_params
-    return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
   end
 
 end
