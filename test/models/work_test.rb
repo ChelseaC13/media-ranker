@@ -100,14 +100,11 @@ describe Work do
     end
   end
 
-
-
-
   describe 'relations' do
-    it 'set vote works_id and user_id through work and user' do
+    it 'set vote work_id and user_id through work and user' do
       # Create two models
       album = Work.create!(category:'album', title: 'test album', creator: 'chelsea', publication_year: 1999, description:'This is a album')
-      user = User.create!
+      user = User.create!(name:"chelsea")
       # Make the models relate to one another
       vote = Vote.create!( id: nil,
         name: nil,
@@ -124,28 +121,38 @@ describe Work do
   end
 
   describe 'spotlight' do
-    it 'returns one object' do
-      album = Work.create!(category:'album', title: 'test album', creator: 'Chelsea', publication_year: 1999, description:'This is a album')
-      book = Work.create!(category:'book', title: 'test book', creator: 'Justin', publication_year: 2000, description:'This is a book')
-      movie = Work.create!(category:'movie', title: 'test movie', creator: 'Huxley', publication_year: 2001, description:'This is a movie') 
-    
-      expect(Work.spotlight).must_equal album
+    before do
+      @album = Work.create!(category:'album', title: 'test album', creator: 'Chelsea', publication_year: 1999, description:'This is a album')
+      @book = Work.create!(category:'book', title: 'test book', creator: 'Justin', publication_year: 2000, description:'This is a book')
+      @movie = Work.create!(category:'movie', title: 'test movie', creator: 'Huxley', publication_year: 2001, description:'This is a movie') 
+    end 
+  
+    it 'returns one object' do 
+      expect(Work.spotlight).must_be_instance_of Work
     end
 
     it "gives the work that has the most votes" do
+      user = User.create!(name: "chel")
+      vote1 = Vote.create!(work_id: @book.id, user_id: user.id)
+      vote2 = Vote.create!(work_id: @book.id, user_id: user.id)
 
+      expect(Work.spotlight).must_equal @book
     end
 
     it "it does something in a tie" do
-      
-    end
+      user = User.create!(name: "chel")
+      vote1 = Vote.create!(work_id: @movie.id, user_id: user.id)
+      vote2 = Vote.create!(work_id: @book.id, user_id: user.id)
 
-    it "no works" do
-      
+      expect(Work.spotlight).must_be_instance_of Work
     end
-
   end
 
+  describe 'spotlight' do 
+    it 'no works' do
+      expect(Work.spotlight).must_be_nil
+    end
+  end
 
   describe 'top_ten' do
     it 'returns 10 objects' do
@@ -164,37 +171,60 @@ describe Work do
       expect(Work.top_ten("album").count).must_equal 10
     end
 
-    it "gives the work that has the most votes" do
+    it "puts the work that has the most votes first" do
+      @album1 = Work.create!(category:'album', title: 'test album', creator: 'Chelsea', publication_year: 1999, description:'This is a album')
+      @album2 = Work.create!(category:'album', title: 'test book', creator: 'Justin', publication_year: 2000, description:'This is a book')
+      @album3 = Work.create!(category:'album', title: 'test movie', creator: 'Huxley', publication_year: 2001, description:'This is a movie') 
+      user = User.create!(name: "chel")
+      vote1 = Vote.create!(work_id: @album2.id, user_id: user.id)
+      vote2 = Vote.create!(work_id: @album2.id, user_id: user.id)
 
+      top_ten = Work.top_ten("album")
+      expect(top_ten[0]).must_equal @album2
     end
 
-    it "it does something in a tie" do
-      
+    it "it places two object with a tie above the third than 10 works" do
+      @album1 = Work.create!(category:'album', title: 'test album', creator: 'Chelsea', publication_year: 1999, description:'This is a album')
+      @album2 = Work.create!(category:'album', title: 'test book', creator: 'Justin', publication_year: 2000, description:'This is a book')
+      @album3 = Work.create!(category:'album', title: 'test movie', creator: 'Huxley', publication_year: 2001, description:'This is a movie') 
+      user = User.create!(name: "chel")
+      vote1 = Vote.create!(work_id: @album3.id, user_id: user.id)
+      vote2 = Vote.create!(work_id: @album2.id, user_id: user.id)
+
+      top_ten = Work.top_ten("album")
+      expect(top_ten[2]).must_equal @album1
+      expect(top_ten.count).must_equal 3
     end
 
     it "no works" do
-      
+      expect(Work.top_ten("album")).must_be_empty
     end
 
   end
 
   describe 'vote total' do
     it 'counts votes correctly' do
-      # album = Work.create!(category:'album', title: 'test album', creator: 'chelsea', publication_year: 1999, description:'This is a album')
-      # user = User.create!
-      # vote = Vote.create!( id: nil, name: nil, created_at: nil, updated_at: nil, work_id: album.id, user_id: user.id)
-      # vote = Vote.create!( id: nil, name: nil, created_at: nil, updated_at: nil, work_id: album.id, user_id: user.id)
-      
-      # expect(Work.vote_total(album.id)).must_equal 2
-    
+      @album1 = Work.create!(category:'album', title: 'test album', creator: 'Chelsea', publication_year: 1999, description:'This is a album')
+      user = User.create!(name: "chel")
+      vote1 = Vote.create!(work_id: @album1.id, user_id: user.id)
+      vote2 = Vote.create!(work_id: @album1.id, user_id: user.id)
+
+      expect(Work.vote_total(@album1.id)).must_equal 2
     end
+  end
 
-    it "gives the work that has the most votes" do
+  describe 'order' do
+    it "puts the work that has the most votes first" do
+      @album1 = Work.create!(category:'album', title: 'test album', creator: 'Chelsea', publication_year: 1999, description:'This is a album')
+      @album2 = Work.create!(category:'album', title: 'test book', creator: 'Justin', publication_year: 2000, description:'This is a book')
+      @album3 = Work.create!(category:'album', title: 'test movie', creator: 'Huxley', publication_year: 2001, description:'This is a movie') 
+      user = User.create!(name: "chel")
+      vote1 = Vote.create!(work_id: @album2.id, user_id: user.id)
+      vote2 = Vote.create!(work_id: @album2.id, user_id: user.id)
 
-    end
-
-    it "it does something in a tie" do
-      
+      order_list = Work.order("album")
+      expect(order_list[0]).must_equal @album2
+      expect(order_list.count).must_equal 3
     end
   end
 end

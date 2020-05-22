@@ -10,12 +10,12 @@ class Work < ApplicationRecord
 
 
   def self.spotlight
-    # to code later
-    work = self.find_by(category: "album")
-    return work
-  end
+    work_group = self.all
+    sorted = work_group.sort_by {|work| work.votes.count}
+    top_work = sorted[-1]
 
-   
+    return top_work
+  end
 
   def self.top_ten(type)
     work_group = self.where(category: type)
@@ -24,6 +24,10 @@ class Work < ApplicationRecord
     top_ten = []
 
     10.times do |i|
+      if i + 1 > sorted.length
+        return top_ten
+      end
+
       top_ten << sorted[(-1) - i]
     end
 
@@ -38,20 +42,8 @@ class Work < ApplicationRecord
     return sorted
   end
 
-
   def self.vote_total(id)
     votes_with_work_id = Vote.where(work_id: id)
     return votes_with_work_id.count
-
   end
-
-  
-  def self.vote_total(id)
-    votes_with_work_id = Vote.where(work_id: id)
-    return votes_with_work_id.count
-
-  end
-    
-  
 end
-

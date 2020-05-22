@@ -1,6 +1,6 @@
 <div class="spotlight">
     <h2><strong>Media Spotlight:</strong> <span class="green"><%=Work.spotlight.title%> </span>  </h2> 
-    <p> insert votes - <%=Work.spotlight.description%> </p>
+    <p> <%=Work.vote_total(Work.spotlight)%> votes - <%=Work.spotlight.description%> </p>
 </div>
 <div class="container">
   <div class="row">
