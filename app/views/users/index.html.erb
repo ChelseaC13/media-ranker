@@ -1,0 +1,19 @@
+<h3><span class="green-with-space">List of Users</span></h3>
+
+<table class="table">
+    <tr>
+        <th>Username</th>
+        <th>Votes</th>
+        <th>Joined</th>    
+    </tr>
+
+    <% user_group = User.all%>
+        <% user_group.each do |user| %>
+        <tr>
+            <td><%= link_to user.name, user_path(user.id) %></td>
+            <td><%= user.votes.count %></td>
+            <% date = user.created_at%>
+            <td><%= date.strftime("%B %d, %Y")%></td> 
+        </tr>
+        <% end %>
+</table>
