@@ -13,7 +13,7 @@
 </button>      
 
 <button type="button" class="btn btn-primary">
-  <%= link_to "Upvote", new_work_path %>
+  <%= link_to "Upvote", work_votes_path(@work.id), method: :post%></td>
 </button> 
 
 <button type="button" class="btn btn-danger"> 
