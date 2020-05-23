@@ -1,72 +1,13 @@
 <h3><span class="green-with-space">List of Works</span></h3>
 <h4>Movies</h4>
-<table class="table">
-    <tr>
-        <th>Votes</th>
-        <th>Title</th>
-        <th>Created By</th>
-        <th>Published</th>
-        <th>Upvote</th>
-    </tr>
-
-    <% work_group = Work.order("movie")%>
-        <% work_group.each do |movie| %>
-        <tr>
-            <td><%= Work.vote_total(movie.id) %></td>
-            <td><%= link_to movie.title, work_path(movie.id) %></td>
-            <td><%= movie.creator %></td>
-            <td><%= movie.publication_year %></td>
-            <td class="btn btn-primary "><%= link_to "Upvote", work_votes_path(movie.id), method: :post%></td> 
-        </tr>
-        <% end %>
-</table>
-
+<%= render partial: "all_works", locals: { action_name: "movie" } %>
 
 <h4>Books</h4>
-<table class="table">
-    <tr>
-        <th>Votes</th>
-        <th>Title</th>
-        <th>Created By</th>
-        <th>Published</th>
-        <th>Upvote</th>
-    </tr>
-
-    <% work_group = Work.order("book")%>
-        <% work_group.each do |book| %>
-        <tr>
-            <td><%= Work.vote_total(book.id) %></td>
-            <td><%= link_to book.title, work_path(book.id) %></td>
-            <td><%= book.creator %></td>
-            <td><%= book.publication_year %></td>
-            <td class="btn btn-primary "><%= link_to "Upvote", work_votes_path(book.id), method: :post%></td>
-        
-        </tr>
-        <% end %>
-</table>
+<%= render partial: "all_works", locals: { action_name: "book" } %>
 
 
 <h4>Albums</h4>
-<table class="table">
-    <tr>
-        <th>Votes</th>
-        <th>Title</th>
-        <th>Created By</th>
-        <th>Published</th>
-        <th>Upvote</th>
-    </tr>
-
-    <% work_group = Work.order("album")%>
-        <% work_group.each do |album| %>
-        <tr>
-            <td><%= Work.vote_total(album.id) %></td>
-            <td><%= link_to album.title, work_path(album.id) %></td>
-            <td><%= album.creator %></td>
-            <td><%= album.publication_year %></td>
-            <td class="btn btn-primary "><%= link_to "Upvote", work_votes_path(album.id), method: :post%></td>
-        </tr>
-        <% end %>
-</table>
+<%= render partial: "all_works", locals: { action_name: "book" } %>
 
 
 
