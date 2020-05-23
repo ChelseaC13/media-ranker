@@ -28,7 +28,6 @@
   </tr>
   <% vote_group = Vote.where(work_id: params[:id]) %>
     <% vote_group.each do |vote| %>
-    
     <tr>
       <td><%= link_to vote.user.name, user_path(vote.user.id) %></td>
       <td><%=vote.created_at.strftime("%B %d, %Y")%></td>

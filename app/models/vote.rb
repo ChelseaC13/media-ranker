@@ -10,8 +10,5 @@ class Vote < ApplicationRecord
     else 
       return false
     end
-
   end
-
-
 end

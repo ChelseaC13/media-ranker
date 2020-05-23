@@ -2,13 +2,10 @@ class WorksController < ApplicationController
 
   def index
     @work = Work.all
-
   end
-
 
   def home
     @work = Work.all
-
   end
 
   def show
@@ -71,7 +68,6 @@ class WorksController < ApplicationController
     @work.destroy
     redirect_to works_path 
     return
-    
   end
 
   private

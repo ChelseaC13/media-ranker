@@ -23,12 +23,9 @@ class VotesController < ApplicationController
         redirect_to works_path
         return
       else
-        p "notice notice notice"
         redirect_to works_path, notice: "Failed to vote"
         return
       end
     end
   end
-
-
 end

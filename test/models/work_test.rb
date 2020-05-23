@@ -3,14 +3,12 @@ require "test_helper"
 describe Work do
   describe 'validations' do
     before do
-      # Arrange
       @album = Work.new(category:'album', title: 'test album', creator: 'chelsea', publication_year: 1999, description:'This is a album')
     end
 
     it 'is valid when all fields are present' do
       # Act
       result = @album.valid?
-
       # Assert
       expect(result).must_equal true
     end
@@ -18,10 +16,8 @@ describe Work do
     it 'is invalid without a title' do
       # Arrange
       @album.title = nil
-    
       # Act
       result = @album.valid?
-    
       # Assert
       expect(result).must_equal false
       expect(@album.errors.messages).must_include :title
@@ -30,10 +26,8 @@ describe Work do
     it 'is invalid without a category' do
       # Arrange
       @album.category = nil
-    
       # Act
       result = @album.valid?
-    
       # Assert
       expect(result).must_equal false
       expect(@album.errors.messages).must_include :category
@@ -42,10 +36,8 @@ describe Work do
     it 'is invalid without a creator' do
       # Arrange
       @album.creator = nil
-    
       # Act
       result = @album.valid?
-    
       # Assert
       expect(result).must_equal false
       expect(@album.errors.messages).must_include :creator
@@ -54,10 +46,8 @@ describe Work do
     it 'is invalid without a publication_year' do
       # Arrange
       @album.publication_year = nil
-    
       # Act
       result = @album.valid?
-    
       # Assert
       expect(result).must_equal false
       expect(@album.errors.messages).must_include :publication_year
@@ -66,10 +56,8 @@ describe Work do
     it 'is invalid without a string as publication_year' do
       # Arrange
       @album.publication_year = "bad"
-    
       # Act
       result = @album.valid?
-    
       # Assert
       expect(result).must_equal false
       expect(@album.errors.messages).must_include :publication_year
@@ -78,10 +66,8 @@ describe Work do
     it 'is invalid without a float as publication_year' do
       # Arrange
       @album.publication_year = 1.2
-    
       # Act
       result = @album.valid?
-    
       # Assert
       expect(result).must_equal false
       expect(@album.errors.messages).must_include :publication_year
@@ -90,10 +76,8 @@ describe Work do
     it 'is invalid without a description' do
       # Arrange
       @album.description = nil
-    
       # Act
       result = @album.valid?
-    
       # Assert
       expect(result).must_equal false
       expect(@album.errors.messages).must_include :description
@@ -117,7 +101,6 @@ describe Work do
       expect(vote.work).must_equal album
       expect(vote.user).must_equal user
     end
-
   end
 
   describe 'spotlight' do
@@ -126,7 +109,7 @@ describe Work do
       @book = Work.create!(category:'book', title: 'test book', creator: 'Justin', publication_year: 2000, description:'This is a book')
       @movie = Work.create!(category:'movie', title: 'test movie', creator: 'Huxley', publication_year: 2001, description:'This is a movie') 
     end 
-  
+
     it 'returns one object' do 
       expect(Work.spotlight).must_be_instance_of Work
     end
@@ -167,7 +150,7 @@ describe Work do
       album9 = Work.create!(category:'album', title: '9', creator: 'Huxley', publication_year: 2001, description:'This is a movie') 
       album10 = Work.create!(category:'album', title: '10', creator: 'Chelsea', publication_year: 1999, description:'This is a album')
       album11 = Work.create!(category:'album', title: '11', creator: 'Justin', publication_year: 2000, description:'This is a book')
-      
+
       expect(Work.top_ten("album").count).must_equal 10
     end
 

@@ -3,31 +3,30 @@
 <p>Joined site <%=@user.created_at.strftime("%B %d, %Y")%></p>
 <h4>Votes</h4>
 <table class="table">
-    <tr>
-        <th>Media Title</th>
-        <th>Created By</th>
-        <th>Published</th>    
-        <th>Category</th>
-        <th>Voted On</th> 
-    </tr>
+  <tr>
+    <th>Media Title</th>
+    <th>Created By</th>
+    <th>Published</th>    
+    <th>Category</th>
+    <th>Voted On</th> 
+  </tr>
 
-    <% vote_group = Vote.where(user_id: params[:id]) %>
-    <% vote_group.each do |vote| %>
+  <% vote_group = Vote.where(user_id: params[:id]) %>
+  <% vote_group.each do |vote| %>
     <tr>
-        <td><%= vote.work.title %></td>
-        <td><%= vote.work.creator %></td>
-        <td><%= vote.work.publication_year %></td>
-        <td><%= vote.work.category %></td>
-        <td><%=vote.created_at.strftime("%B %d, %Y")%></td>
-        
+      <td><%= vote.work.title %></td>
+      <td><%= vote.work.creator %></td>
+      <td><%= vote.work.publication_year %></td>
+      <td><%= vote.work.category %></td>
+      <td><%=vote.created_at.strftime("%B %d, %Y")%></td>
     </tr>
-    <% end %> 
+  <% end %> 
 </table>
 
-    <button  class="btn btn-primary gray">
-         <%= link_to "See all Users", users_path %>
-    </button>
+<button  class="btn btn-primary gray">
+  <%= link_to "See all Users", users_path %>
+</button>
 
-    <button type="button" class="btn btn-primary">
-        <%= link_to "Back to Media List", works_path %>
-    </button>
+<button type="button" class="btn btn-primary">
+  <%= link_to "Back to Media List", works_path %>
+</button>
