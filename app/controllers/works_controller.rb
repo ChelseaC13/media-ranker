@@ -26,6 +26,7 @@ class WorksController < ApplicationController
     
     if @work.save 
       redirect_to work_path(@work.id)
+      flash[:success] = "Successfully created #{@work.title}"
       return
     else 
       render :new, status: :bad_request

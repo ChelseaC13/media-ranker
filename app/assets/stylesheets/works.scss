@@ -10,12 +10,15 @@
    
     padding: 30px;
 }
+.header-space{
+    padding: 20px;
+    
+}
 
 .green_title{
     font-weight: bold;
     font-size: 20px;
     color: #25a69a;
-
 }
 
 .gray_creator{
@@ -25,11 +28,10 @@
 
 .green{
     color: #25a69a;
-
 }
 
 .btn-primary{
-    color: white;
+    color: white !important;
     background-color:#25a69a ;
     border: none;
     margin: 5px;
@@ -43,10 +45,17 @@
 
 .green-with-space{
     color: #25a69a;
-    margin: 0px 0px 0px 15px
 }
 
 table{
     margin: 15
     px;
+}
+
+.greenline{
+    border: 1px solid #25a69a;
+}
+
+.margin{
+    margin-left: 20px;
 }

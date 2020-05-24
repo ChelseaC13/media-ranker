@@ -13,47 +13,22 @@
   <header>
     <nav>
       <h1 class="headerwords"><%= link_to "Media Ranker", root_path , class:"orange-header"%> <span class="white-title"> <span class="white-line">  |  </span>  Ranking the Best of Everything</span></h1>
-  
-      <div class="btn-group ">
-        <button type="button" class="btn btn-link">
-          <%= link_to "View top media", root_path %>
-        </button>   
-      </div>
 
-      <div class="btn-group ">
-        <button type="button"class="btn btn-link" >
-          <%= link_to "View all media", works_path %>
-        </button>
-      </div>
-
-      <div class="btn-group ">
-        <button type="button"class="btn btn-link" >
-          <%= link_to "Add a new work", new_work_path %>
-        </button>
-      </div>
-
-      <div class="btn-group ">
-        <button type="button"class="btn btn-link" >
-          <%= link_to "View all users", users_path %>
-        </button>
-      </div>
+      <span class="nav-item float-left"><%= link_to "View top media", root_path %> </span>
+      <span class="nav-item float-left"><%= link_to "View all media", works_path %></span>
+      <span class="nav-item float-left"><%= link_to "Add a new work", new_work_path %></span>
+      <span class="nav-item float-left"><%= link_to "View all users", users_path %></span>
+        
         
       <% if session[:user_id] == nil %>
-        <button type="button" class="btn btn-primary">
-          <%= link_to "Log In", login_path %>
-        </button>
-
+        <span class="nav-item float-right round"><%= link_to "Log In", login_path %></span>
       <% else %>
-        <button  class="btn btn-primary">
-          <%user = User.find_by(id: session[:user_id])%>
-          <%= link_to "Logged in as #{user.name}", user_path(user.id) %></td>
-        </button>
-
-        <button type="button" class="btn btn-primary">
-          <%= link_to "Log Out", logout_path, method: :post %>
-        </button>
+        <span class="nav-item float-right round"><%= link_to "Log Out", logout_path, method: :post %></span>
+        <%user = User.find_by(id: session[:user_id])%>
+        <span class="nav-item float-right round"> <%= link_to "Logged in as #{user.name}", user_path(user.id) %></td></span>
       <% end %>
     </nav>
+    <br>
   </header>
 
     <section class="flash-msg__section">
@@ -63,7 +38,7 @@
         </strong>
       <% end %>
     </section>
-
+    <br>
     <%= yield %>
   </body>
 </html>

@@ -20,7 +20,7 @@
 .orange-header{
     font-weight: bold;
     font-size: 34px;
-    color: #ff5721;
+    color: #ff5721 !important;
 }
 
 .white-title{
@@ -43,13 +43,37 @@
 }
 
 .btn-group {
-    background-color: #b2dfdb;
+    background-color: #b2dfdb ;
     color: #25a69a;
+    border: none;
+    margin: none;
+    padding: none;
 }
 
 .flash-msg__section {
     background-color:#d4edda ;
     color:#176b63 ;
     font-weight: lighter;
+    margin: 50px 0px 0px 0px;
     
+}
+
+.nav-item {
+    background-color: #b2dfdb ;
+    padding: 20px 20px 10px 20px ; 
+    border: none;
+}
+
+.underlined{
+    text-decoration: underline;
+    color: #25a69a;
+}
+
+.round{
+    border-radius: 10px;
+    margin: 3px;
+    padding: 10px 10px 10px 20px ; 
+    background-color: #25a69a;
+    color: white;
+  
 }

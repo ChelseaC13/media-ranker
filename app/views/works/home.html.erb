@@ -1,36 +1,40 @@
 <div class="spotlight">
-    <h2><strong>Media Spotlight:</strong> <span class="green"><%=Work.spotlight.title%> </span>  </h2> 
+    <h2><strong>Media Spotlight:</strong> <span class="green underlined"><%= link_to "#{Work.spotlight.title}", work_path(Work.spotlight.id) %></span> <span class="green">By <%=Work.spotlight.creator%></span>  </h2> 
     <p> <%=Work.vote_total(Work.spotlight)%> votes - <%=Work.spotlight.description%> </p>
+<hr>
 </div>
 <div class="container">
   <div class="row">
     <div class="col-sm">
       <h3 class="green">Top Movies</h3>
+      <hr class="greenline">
         <ul>
             <% top_movies = Work.top_ten("movie")%>
             <% top_movies.each do |movie| %>
                 <span class="green_title"><%= link_to "#{movie.title}", work_path(movie.id) %></span> <span class="gray_creator">by <%=movie.creator%></span>
-                <p><%=Work.vote_total(movie.id)%><p>
+                <p><%=Work.vote_total(movie.id)%> votes<p>
             <% end %>
         </ul>
     </div>
     <div class="col-sm">
       <h3 class="green">Top Books</h3>
+      <hr class="greenline">
         <ul>
           <% top_books = Work.top_ten("book")%>
             <% top_books.each do |book| %>
                 <span class="green_title"><%= link_to "#{book.title}", work_path(book.id) %></span> <span class="gray_creator">by <%=book.creator%></span>
-                <p><%=Work.vote_total(book.id)%><p>
+                <p><%=Work.vote_total(book.id)%> votes<p>
             <% end %>
         </ul>
     </div>
     <div class="col-sm">
       <h3 class="green">Top Albums</h3>
+      <hr class="greenline">
         <ul>
             <% top_books = Work.top_ten("album")%>
             <% top_books.each do |album| %>
                 <span class="green_title"><%= link_to "#{album.title}", work_path(album.id) %></span> <span class="gray_creator">by <%=album.creator%></span>
-                <p><%=Work.vote_total(album.id)%><p>
+                <p><%=Work.vote_total(album.id)%> votes<p>
             <% end %>
         </ul>
     </div>
