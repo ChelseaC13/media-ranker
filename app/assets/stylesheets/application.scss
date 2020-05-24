@@ -31,10 +31,9 @@
 }
 
 .headerwords{
-    padding: 40px 60px;
-    margin: 0px;
+    padding: 40px 60px 60px 60px;
+    margin: 0px 0px 0px 0px;
     background-color: #b2dfdb;
-    
 }
 
 .white-line{
@@ -62,6 +61,7 @@
     background-color: #b2dfdb ;
     padding: 20px 20px 10px 20px ; 
     border: none;
+    // margin-bottom: -200px;
 }
 
 .underlined{
@@ -75,5 +75,17 @@
     padding: 10px 10px 10px 20px ; 
     background-color: #25a69a;
     color: white;
-  
+    // margin-top: -200px;
+}
+
+a{
+    color: #25a69a;
+}
+
+a:hover{
+    color:#176b63;
+}
+
+button a {
+    color: white;
 }
